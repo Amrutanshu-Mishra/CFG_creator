@@ -1,0 +1,29 @@
+digraph branches {
+	fontname=Helvetica fontsize=14 label="branches   N=11 E=13 M=4 (low)" labelloc=t
+	node [fillcolor="#fafafa" fontname=Courier fontsize=10 shape=box style="rounded,filled"]
+	edge [fontname=Helvetica fontsize=9]
+	0 [label="ENTRY\ndef branches(n)" fillcolor="#c8e6c9" fontname=Helvetica shape=ellipse style="filled,bold"]
+	1 [label=EXIT fillcolor="#ffcdd2" fontname=Helvetica shape=doublecircle style="filled,bold"]
+	2 [label="B2  L8\l   8: if n < 0:\l"]
+	3 [label="B3  L9\l   9: return \"neg\"\l"]
+	4 [label="B4  L14\l  14: ifexp: n\l"]
+	5 [label="B5  L10\l  10: elif n == 0:\l"]
+	6 [label="B6  L11\l  11: return \"zero\"\l"]
+	7 [label="B7  L13\l  13: r = \"pos\"\l"]
+	8 [label="B8  L14\l  14: ifexp → print('unreachable?')\l"]
+	9 [label="B9  L14\l  14: ifexp → None\l"]
+	10 [label="B10  L14-15\l  14: print(\"unreachable?\") if n else None\l  15: return r\l"]
+	0 -> 2
+	2 -> 3 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	2 -> 5 [label=F color="#c62828" fontcolor="#c62828"]
+	3 -> 1
+	5 -> 6 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	5 -> 7 [label=F color="#c62828" fontcolor="#c62828"]
+	6 -> 1
+	7 -> 4
+	4 -> 8 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	4 -> 9 [label=F color="#c62828" fontcolor="#c62828"]
+	8 -> 10
+	9 -> 10
+	10 -> 1
+}

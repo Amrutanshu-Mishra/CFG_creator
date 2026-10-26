@@ -1,0 +1,16 @@
+digraph fin_nested {
+	fontname=Helvetica fontsize=14 label="fin_nested   N=6 E=5 M=1 (low)" labelloc=t
+	node [fillcolor="#fafafa" fontname=Courier fontsize=10 shape=box style="rounded,filled"]
+	edge [fontname=Helvetica fontsize=9]
+	0 [label="ENTRY\ndef fin_nested(a)" fillcolor="#c8e6c9" fontname=Helvetica shape=ellipse style="filled,bold"]
+	1 [label=EXIT fillcolor="#ffcdd2" fontname=Helvetica shape=doublecircle style="filled,bold"]
+	2 [label="B2  L105\l 105: try:\l"]
+	3 [label="B3  L106-107\l 106: try:\l 107: return a\l"]
+	4 [label="B4  L108-109\l 108: finally: (return→EXIT)\l 109: print(\"inner\")\l"]
+	5 [label="B5  L110-111\l 110: finally: (return→EXIT)\l 111: print(\"outer\")\l"]
+	0 -> 2
+	2 -> 3
+	5 -> 1
+	4 -> 5 [label="return→EXIT" color="#37474f" fontcolor="#37474f" style=bold]
+	3 -> 4 [label="return→EXIT" color="#37474f" fontcolor="#37474f" style=bold]
+}

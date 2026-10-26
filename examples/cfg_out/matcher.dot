@@ -1,0 +1,29 @@
+digraph matcher {
+	fontname=Helvetica fontsize=14 label="matcher   N=11 E=13 M=4 (low)" labelloc=t
+	node [fillcolor="#fafafa" fontname=Courier fontsize=10 shape=box style="rounded,filled"]
+	edge [fontname=Helvetica fontsize=9]
+	0 [label="ENTRY\ndef matcher(cmd)" fillcolor="#c8e6c9" fontname=Helvetica shape=ellipse style="filled,bold"]
+	1 [label=EXIT fillcolor="#ffcdd2" fontname=Helvetica shape=doublecircle style="filled,bold"]
+	2 [label="B2  L56\l  56: match cmd:\l"]
+	3 [label="B3  L57\l  57: case ['go', d] if d in ('n', 's') or d == 'e':\l"]
+	4 [label="B4  L58\l  58: return 1\l"]
+	5 [label="B5  L59\l  59: case {'x': 1}:\l"]
+	6 [label="B6  L60\l  60: return 2\l"]
+	7 [label="B7  L61\l  61: case 1 | 2:\l"]
+	8 [label="B8  L62\l  62: return 3\l"]
+	9 [label="B9  L63\l  63: case _:\l"]
+	10 [label="B10  L64\l  64: return 4\l"]
+	0 -> 2
+	2 -> 3
+	3 -> 4 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	3 -> 5 [label=F color="#c62828" fontcolor="#c62828"]
+	4 -> 1
+	5 -> 6 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	5 -> 7 [label=F color="#c62828" fontcolor="#c62828"]
+	6 -> 1
+	7 -> 8 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	7 -> 9 [label=F color="#c62828" fontcolor="#c62828"]
+	8 -> 1
+	9 -> 10
+	10 -> 1
+}

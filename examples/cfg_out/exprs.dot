@@ -1,0 +1,52 @@
+digraph exprs {
+	fontname=Helvetica fontsize=14 label="exprs   N=20 E=27 M=9 (low)" labelloc=t
+	node [fillcolor="#fafafa" fontname=Courier fontsize=10 shape=box style="rounded,filled"]
+	edge [fontname=Helvetica fontsize=9]
+	0 [label="ENTRY\ndef exprs(xs, flag)" fillcolor="#c8e6c9" fontname=Helvetica shape=ellipse style="filled,bold"]
+	1 [label=EXIT fillcolor="#ffcdd2" fontname=Helvetica shape=doublecircle style="filled,bold"]
+	2 [label="B2  L114\l 114: ifexp: flag\l"]
+	3 [label="B3  L114\l 114: ifexp → 1\l"]
+	4 [label="B4  L114\l 114: ifexp → 2\l"]
+	5 [label="B5  L114\l 114: y = 1 if flag else 2\l"]
+	6 [label="B6  L115\l 115: pairs = [(a, b) for a in xs if a for b in xs if b > a]\l"]
+	7 [label="B7  L115\l 115: comp: for a in xs\l"]
+	8 [label="B8  L115\l 115: comp: if a\l"]
+	9 [label="B9  L115\l 115: comp: for b in xs\l"]
+	10 [label="B10  L115\l 115: comp: if b > a\l"]
+	11 [label="B11  L115\l 115: comp → (a, b)\l"]
+	12 [label="B12  L116-117\l 116: lookup = {k: (v if v else 0) for k, v in xs}\l 117: assert y > 0\l"]
+	13 [label="B13  L116\l 116: comp: for (k, v) in xs\l"]
+	14 [label="B14  L116\l 116: ifexp: v\l"]
+	15 [label="B15  L116\l 116: ifexp → v\l"]
+	16 [label="B16  L116\l 116: ifexp → 0\l"]
+	17 [label="B17  L116\l 116: comp → k: v if v else 0\l"]
+	18 [label="B18  L118\l 118: return y, pairs, lookup\l"]
+	19 [label="B19  L117\l 117: raise AssertionError('positive')\l"]
+	0 -> 2
+	2 -> 3 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	2 -> 4 [label=F color="#c62828" fontcolor="#c62828"]
+	3 -> 5
+	4 -> 5
+	5 -> 7
+	7 -> 8 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	7 -> 6 [label=F color="#c62828" fontcolor="#c62828"]
+	8 -> 9 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	8 -> 7 [label=F color="#c62828" fontcolor="#c62828"]
+	9 -> 10 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	9 -> 7 [label=F color="#c62828" fontcolor="#c62828"]
+	10 -> 11 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	10 -> 9 [label=F color="#c62828" fontcolor="#c62828"]
+	11 -> 9
+	6 -> 13
+	13 -> 14 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	13 -> 12 [label=F color="#c62828" fontcolor="#c62828"]
+	14 -> 15 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	14 -> 16 [label=F color="#c62828" fontcolor="#c62828"]
+	15 -> 17
+	16 -> 17
+	17 -> 13
+	12 -> 18 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	12 -> 19 [label=F color="#c62828" fontcolor="#c62828"]
+	19 -> 1 [label=raise color="#6a1b9a" fontcolor="#6a1b9a" style=dashed]
+	18 -> 1
+}

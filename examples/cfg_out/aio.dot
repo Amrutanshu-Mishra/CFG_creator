@@ -1,0 +1,23 @@
+digraph aio {
+	fontname=Helvetica fontsize=14 label="aio   N=8 E=10 M=4 (low)" labelloc=t
+	node [fillcolor="#fafafa" fontname=Courier fontsize=10 shape=box style="rounded,filled"]
+	edge [fontname=Helvetica fontsize=9]
+	0 [label="ENTRY\nasync def aio(xs)" fillcolor="#c8e6c9" fontname=Helvetica shape=ellipse style="filled,bold"]
+	1 [label=EXIT fillcolor="#ffcdd2" fontname=Helvetica shape=doublecircle style="filled,bold"]
+	2 [label="B2  L67\l  67: async for x in xs:\l"]
+	3 [label="B3  L68-69\l  68: async with x:\l  69: y = x and xs or None\l"]
+	4 [label="B4  L70\l  70: return [v for v in xs if v or not v]\l"]
+	5 [label="B5  L70\l  70: comp: for v in xs\l"]
+	6 [label="B6  L70\l  70: comp: if v or not v\l"]
+	7 [label="B7  L70\l  70: comp → v\l"]
+	0 -> 2
+	2 -> 3 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	2 -> 5 [label=F color="#c62828" fontcolor="#c62828"]
+	3 -> 2
+	5 -> 6 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	5 -> 4 [label=F color="#c62828" fontcolor="#c62828"]
+	6 -> 7 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	6 -> 5 [label=F color="#c62828" fontcolor="#c62828"]
+	7 -> 5
+	4 -> 1
+}

@@ -1,0 +1,10 @@
+digraph seq {
+	fontname=Helvetica fontsize=14 label="seq   N=3 E=2 M=1 (low)" labelloc=t
+	node [fillcolor="#fafafa" fontname=Courier fontsize=10 shape=box style="rounded,filled"]
+	edge [fontname=Helvetica fontsize=9]
+	0 [label="ENTRY\ndef seq(a)" fillcolor="#c8e6c9" fontname=Helvetica shape=ellipse style="filled,bold"]
+	1 [label=EXIT fillcolor="#ffcdd2" fontname=Helvetica shape=doublecircle style="filled,bold"]
+	2 [label="B2  L4-5\l   4: x = a + 1\l   5: return x * 2\l"]
+	0 -> 2
+	2 -> 1
+}

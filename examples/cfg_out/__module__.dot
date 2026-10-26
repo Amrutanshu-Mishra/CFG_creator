@@ -1,0 +1,15 @@
+digraph __module__ {
+	fontname=Helvetica fontsize=14 label="<module>   N=5 E=5 M=2 (low)" labelloc=t
+	node [fillcolor="#fafafa" fontname=Courier fontsize=10 shape=box style="rounded,filled"]
+	edge [fontname=Helvetica fontsize=9]
+	0 [label=ENTRY fillcolor="#c8e6c9" fontname=Helvetica shape=ellipse style="filled,bold"]
+	1 [label=EXIT fillcolor="#ffcdd2" fontname=Helvetica shape=doublecircle style="filled,bold"]
+	2 [label="B2  L1-81\l   1: import sys\l   3: def seq(a):\l   7: def branches(n):\l  17: def loops(items):\l  33: def dead(x):\l  39: def exc(path):\l  55: def matcher(cmd):\l  66: async def aio(xs):\l  72: class C:\l  81: if __name__ == '__main__':\l"]
+	3 [label="B3  L82\l  82: print(C().method())\l"]
+	4 [label="B4  L84-113\l  84: def fin_return(path):\l  90: def fin_loop(items):\l 104: def fin_nested(a):\l 113: def exprs(xs, flag):\l"]
+	0 -> 2
+	2 -> 3 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	2 -> 4 [label=F color="#c62828" fontcolor="#c62828"]
+	3 -> 4
+	4 -> 1
+}

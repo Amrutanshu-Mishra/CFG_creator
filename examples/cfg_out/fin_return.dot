@@ -1,0 +1,12 @@
+digraph fin_return {
+	fontname=Helvetica fontsize=14 label="fin_return   N=4 E=3 M=1 (low)" labelloc=t
+	node [fillcolor="#fafafa" fontname=Courier fontsize=10 shape=box style="rounded,filled"]
+	edge [fontname=Helvetica fontsize=9]
+	0 [label="ENTRY\ndef fin_return(path)" fillcolor="#c8e6c9" fontname=Helvetica shape=ellipse style="filled,bold"]
+	1 [label=EXIT fillcolor="#ffcdd2" fontname=Helvetica shape=doublecircle style="filled,bold"]
+	2 [label="B2  L85-86\l  85: try:\l  86: return open(path).read()\l"]
+	3 [label="B3  L87-88\l  87: finally: (return→EXIT)\l  88: print(\"closing\")\l"]
+	0 -> 2
+	3 -> 1
+	2 -> 3 [label="return→EXIT" color="#37474f" fontcolor="#37474f" style=bold]
+}

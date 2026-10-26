@@ -1,0 +1,36 @@
+digraph loops {
+	fontname=Helvetica fontsize=14 label="loops   N=14 E=17 M=5 (low)" labelloc=t
+	node [fillcolor="#fafafa" fontname=Courier fontsize=10 shape=box style="rounded,filled"]
+	edge [fontname=Helvetica fontsize=9]
+	0 [label="ENTRY\ndef loops(items)" fillcolor="#c8e6c9" fontname=Helvetica shape=ellipse style="filled,bold"]
+	1 [label=EXIT fillcolor="#ffcdd2" fontname=Helvetica shape=doublecircle style="filled,bold"]
+	2 [label="B2  L18\l  18: total = 0\l"]
+	3 [label="B3  L19\l  19: for i in items:\l"]
+	4 [label="B4  L20\l  20: if i is None:\l"]
+	5 [label="B5  L26\l  26: print(\"no break\")\l"]
+	6 [label="B6  L21\l  21: continue\l"]
+	7 [label="B7  L22\l  22: if i > 100:\l"]
+	8 [label="B8  L23\l  23: break\l"]
+	9 [label="B9  L24\l  24: total += i\l"]
+	10 [label="B10  L27\l  27: while total > 10 and total % 2 == 0 or total == 3:\l"]
+	11 [label="B11  L28\l  28: total //= 2\l"]
+	12 [label="B12  L31\l  31: return total\l"]
+	13 [label="B13  L30\l  30: pass\l"]
+	0 -> 2
+	2 -> 3
+	3 -> 4 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	3 -> 5 [label=F color="#c62828" fontcolor="#c62828"]
+	4 -> 6 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	4 -> 7 [label=F color="#c62828" fontcolor="#c62828"]
+	6 -> 3 [label=continue color="#1565c0" fontcolor="#1565c0" style=dashed]
+	7 -> 8 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	7 -> 9 [label=F color="#c62828" fontcolor="#c62828"]
+	8 -> 10 [label=break color="#1565c0" fontcolor="#1565c0" style=dashed]
+	9 -> 3
+	5 -> 10
+	10 -> 11 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	10 -> 13 [label=F color="#c62828" fontcolor="#c62828"]
+	11 -> 10
+	13 -> 12
+	12 -> 1
+}

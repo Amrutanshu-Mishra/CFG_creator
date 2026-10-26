@@ -1,0 +1,15 @@
+digraph dead {
+	fontname=Helvetica fontsize=14 label="dead   N=5 E=5 M=2 (low)" labelloc=t
+	node [fillcolor="#fafafa" fontname=Courier fontsize=10 shape=box style="rounded,filled"]
+	edge [fontname=Helvetica fontsize=9]
+	0 [label="ENTRY\ndef dead(x)" fillcolor="#c8e6c9" fontname=Helvetica shape=ellipse style="filled,bold"]
+	1 [label=EXIT fillcolor="#ffcdd2" fontname=Helvetica shape=doublecircle style="filled,bold"]
+	2 [label="B2  L34\l  34: return x\l"]
+	3 [label="B3  L35-36\l  35: print(\"dead\")\l  36: if x:\l(unreachable)\l" color="#9e9e9e" fontcolor="#757575" style="rounded,dashed"]
+	4 [label="B4  L37\l  37: y = 1\l(unreachable)\l" color="#9e9e9e" fontcolor="#757575" style="rounded,dashed"]
+	0 -> 2
+	2 -> 1
+	3 -> 4 [label=T color="#2e7d32" fontcolor="#2e7d32"]
+	3 -> 1 [label=F color="#c62828" fontcolor="#c62828"]
+	4 -> 1
+}

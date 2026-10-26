@@ -1,0 +1,24 @@
+digraph exc {
+	fontname=Helvetica fontsize=14 label="exc   N=9 E=10 M=3 (low)" labelloc=t
+	node [fillcolor="#fafafa" fontname=Courier fontsize=10 shape=box style="rounded,filled"]
+	edge [fontname=Helvetica fontsize=9]
+	0 [label="ENTRY\ndef exc(path)" fillcolor="#c8e6c9" fontname=Helvetica shape=ellipse style="filled,bold"]
+	1 [label=EXIT fillcolor="#ffcdd2" fontname=Helvetica shape=doublecircle style="filled,bold"]
+	2 [label="B2  L40-48\l  40: try:\l  41: f = open(path)\l  42: data = f.read()\l  48: print(\"ok\")\l"]
+	3 [label="B3  L51-53\l  51: with open(path) as g, open(path) as h:\l  52: g.read()\l  53: return data\l"]
+	4 [label="B4  L49-50\l  49: finally:\l  50: print(\"done\")\l"]
+	5 [label="B5  L43-44\l  43: except FileNotFoundError:\l  44: return None\l"]
+	6 [label="B6  L49-50\l  49: finally: (return→EXIT)\l  50: print(\"done\")\l"]
+	7 [label="B7  L45-46\l  45: except (OSError, ValueError) as e:\l  46: raise RuntimeError(e)\l"]
+	8 [label="B8  L49-50\l  49: finally: (raise→EXIT)\l  50: print(\"done\")\l"]
+	0 -> 2
+	2 -> 4
+	2 -> 5 [label="except FileNotFoundError" color="#ef6c00" fontcolor="#ef6c00" style=dashed]
+	6 -> 1
+	5 -> 6 [label="return→EXIT" color="#37474f" fontcolor="#37474f" style=bold]
+	2 -> 7 [label="except (OSError, ValueError)" color="#ef6c00" fontcolor="#ef6c00" style=dashed]
+	8 -> 1 [label=raise color="#6a1b9a" fontcolor="#6a1b9a" style=dashed]
+	7 -> 8 [label="raise→EXIT" color="#6a1b9a" fontcolor="#6a1b9a" style=bold]
+	4 -> 3
+	3 -> 1
+}
