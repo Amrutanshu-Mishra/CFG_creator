@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Default output directory of `python -m cfgtool` (examples/cfg_out is tracked on purpose)
+/cfg_out/
